@@ -130,7 +130,7 @@ def dexcomAPI(endpoint = "egvs", start="2022-02-27T00:30:00", end="2022-02-27T02
             writeResponse(data)
             readExistingToken()
 
-        response = getData()
+        response = getData(endpoint, start, end)
 
     return response.json()
 
