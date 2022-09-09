@@ -27,7 +27,7 @@ This wrapper takes care of authentication, requests, and fetching data from the 
     OR\
     `pip install -r requirements.txt`
 4. Enter `CLIENT_ID` and `CLIENT_SECRET` on lines `11` and `12` respectively of `app.py`.\
-    **NOTE**: If you entered a different "Redirect URI" than `https://localhost:8080` on step 2.4, then change line `16`.
+    **NOTE**: If you entered a different "Redirect URI" than `https://localhost:8080` on step 2.iv, then change line `16`.
 5. Run application to generate tokens.
     1. Run `python dexcom.py`
     2. Open the URL that's printed in the console. Sign in to your Dexcom Account.\
@@ -40,12 +40,15 @@ This wrapper takes care of authentication, requests, and fetching data from the 
 
 
 ## Usage
-Other than for setup and reference purposes, you don't need to access `apy.py`. Your application implementation will be done entirely in `dexcom.py`. To use the API, use the `dexcomAPI` function.
+Other than for setup and reference purposes, you don't need to access `api.py`. Your application implementation will be done entirely in `dexcom.py`. To use the API, use the `dexcomAPI` function.
 
-`dexcomAPI` takes three parameters:
-- `endpoint`: The endpoint you'd like to use: `calibrations`, `dataRange`, `devices`, `egvs`, or `events`. Default: `egvs`. All endpoints besides `dataRange` require a time window indicated by the `start` and `end` parameters below.
-- `start`: the beginning date of the time window. Use `dataRange` endpoint to get the earliest time. Default: `2022-02-27T00:30:00`.
-- `end`: the ending date of the time window. Use `dataRange` endpoint to get the latest time. Default: `2022-02-27T02:35:00`.
+`dexcomAPI` takes three arguments:
+- `endpoint`: The endpoint to use: `calibrations`, `dataRange`, `devices`, `egvs`, or `events`. All endpoints besides `dataRange` require a time window indicated by the `start` and `end` parameters below.\
+    Default: `egvs`. 
+- `start`: the beginning date of the time window. Use `dataRange` endpoint to get the earliest time.\
+    Default: `2022-02-27T00:30:00`.
+- `end`: the ending date of the time window. Use `dataRange` endpoint to get the latest time.\
+    Default: `2022-02-27T02:35:00`.
 <br><br>
 
 `dexcomAPI` returns a JSON object. Refer to the [Features](#features) section for each endpoint details. 
@@ -63,7 +66,7 @@ During authentication, you will be asked to select a Sandbox user. Refer to the 
 ## Limitations
 - According to [Dexcom Developer FAQs](https://developer.dexcom.com/content/frequently-asked-questions), the Dexcom API does **NOT** provide real-time estimated glucose values. All values reported by the `/egvs` endpoint are intentionally delayed by 3 hours. If you'd like real-time values, I highly **recommend** checking out [Nightscout](https://github.com/nightscout/cgm-remote-monitor).
 - This wrapper does NOT deal with the [`/statistics`](https://developer.dexcom.com/post-statistics) endpoint. You can find more information about endpoints on [Dexcom Developer Docs](https://developer.dexcom.com/endpoint-overview).
-- This application is simply a wrapper. It does not manipulate or analyze the Dexcom API data in any way. That is left up to you. I got bulk of the work out of the way so read up on [Dexcom Developer Docs](https://developer.dexcom.com/overview) and change this application to your liking. 
+- This application is simply a wrapper. It does not manipulate or analyze the Dexcom API data in any way. That is left up to you. I got bulk of the work out of the way so read up on [Dexcom Developer Docs](https://developer.dexcom.com/overview) and change this application to your liking. All the best!
 <br><br>
 
 
